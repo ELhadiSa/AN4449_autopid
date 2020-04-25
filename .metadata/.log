@@ -128,3 +128,57 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.atollic.hardwaredebug.launch 2 0 2020-04-25 18:36:45.844
 !MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY org.eclipse.cdt.ui 4 4 2020-04-25 18:42:25.222
+!MESSAGE Error
+!STACK 1
+C Model Exception: Core Exception [code 275] A resource exists with a different case: '/an4449_autopid/INC'.
+	at org.eclipse.cdt.internal.core.model.BatchOperation.executeOperation(BatchOperation.java:47)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(CModelOperation.java:341)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(CModelOperation.java:607)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.cdt.core.model.CoreModel.run(CoreModel.java:1220)
+	at org.eclipse.cdt.internal.ui.actions.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: org.eclipse.core.internal.resources.ResourceException: A resource exists with a different case: '/an4449_autopid/INC'.
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:323)
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:301)
+	at org.eclipse.core.internal.resources.Folder.assertCreateRequirements(Folder.java:30)
+	at org.eclipse.core.internal.resources.Folder.create(Folder.java:93)
+	at org.eclipse.core.internal.resources.Folder.create(Folder.java:121)
+	at org.eclipse.cdt.internal.ui.util.CoreUtility.createFolder(CoreUtility.java:36)
+	at org.eclipse.cdt.internal.ui.wizards.folderwizard.NewSourceFolderWizardPage.createSourceRoot(NewSourceFolderWizardPage.java:394)
+	at org.eclipse.cdt.ui.wizards.NewSourceFolderCreationWizard.finishPage(NewSourceFolderCreationWizard.java:43)
+	at org.eclipse.cdt.internal.ui.wizards.NewElementWizard$2.run(NewElementWizard.java:94)
+	at org.eclipse.cdt.internal.core.model.BatchOperation.executeOperation(BatchOperation.java:36)
+	... 7 more
+!SUBENTRY 1 org.eclipse.cdt.core 4 966 2020-04-25 18:42:25.224
+!MESSAGE A resource exists with a different case: '/an4449_autopid/INC'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: A resource exists with a different case: '/an4449_autopid/INC'.
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:323)
+	at org.eclipse.core.internal.resources.Resource.checkDoesNotExist(Resource.java:301)
+	at org.eclipse.core.internal.resources.Folder.assertCreateRequirements(Folder.java:30)
+	at org.eclipse.core.internal.resources.Folder.create(Folder.java:93)
+	at org.eclipse.core.internal.resources.Folder.create(Folder.java:121)
+	at org.eclipse.cdt.internal.ui.util.CoreUtility.createFolder(CoreUtility.java:36)
+	at org.eclipse.cdt.internal.ui.wizards.folderwizard.NewSourceFolderWizardPage.createSourceRoot(NewSourceFolderWizardPage.java:394)
+	at org.eclipse.cdt.ui.wizards.NewSourceFolderCreationWizard.finishPage(NewSourceFolderCreationWizard.java:43)
+	at org.eclipse.cdt.internal.ui.wizards.NewElementWizard$2.run(NewElementWizard.java:94)
+	at org.eclipse.cdt.internal.core.model.BatchOperation.executeOperation(BatchOperation.java:36)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(CModelOperation.java:341)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(CModelOperation.java:607)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.cdt.core.model.CoreModel.run(CoreModel.java:1220)
+	at org.eclipse.cdt.internal.ui.actions.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+!SUBENTRY 2 org.eclipse.core.resources 4 275 2020-04-25 18:42:25.224
+!MESSAGE A resource exists with a different case: '/an4449_autopid/INC'.
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-04-25 18:47:32.452
+!MESSAGE Indexed 'an4449_autopid' (18 sources, 138 headers) in 7,98 sec: 20 313 declarations; 89 422 references; 2 unresolved inclusions; 48 syntax errors; 190 unresolved names (0,17 %)
+
+!ENTRY org.eclipse.ui 4 4 2020-04-25 18:47:51.605
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.TaskList.
