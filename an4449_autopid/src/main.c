@@ -20,7 +20,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include <stdlib.h>
+#include <stdio.h>
+#define autotune
 
 /** @addtogroup STM32F3xx_HAL_Examples
 * @{
@@ -32,8 +34,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-#define DEBUG // for debug purpose only (check comments for use)
-#define RANGE_MONITORING_ON // check if the appropriate Vin or Vout voltages are inside range during operation (3V min.; 15V max.)
+//#define DEBUG // for debug purpose only (check comments for use)
+//#define RANGE_MONITORING_ON // check if the appropriate Vin or Vout voltages are inside range during operation (3V min.; 15V max.)
 
 
 /* Private macro -------------------------------------------------------------*/
@@ -712,11 +714,38 @@ static void Vout_Check(void)
 
 }
 
+
+
+
 /**
 * @brief  This function calculates new duty order with PI.
 * @param  None
 * @retval New duty order
 */
+
+int32_t uATk;
+float Kpmk;
+float ek;
+float Kimk;
+float sumj_kej;
+float Kdmk;
+float ekmoin1;
+float Kp_auto=0.25;
+float Ki_auto=0.25;
+float Kd_auto=0;
+float k1=0;//0.0001035;//ku=0.00023  tu=240us
+float k2=0;//0.0000017;
+float k3=0;
+float betak;
+
+float enk;
+float deltaenk;
+
+float V0k;
+float Vref;
+
+
+
 int32_t PI_Buck(void)
 {
   /* Local variable used to prevent compilation warning */
@@ -726,6 +755,8 @@ int32_t PI_Buck(void)
   /* Every time the PI order sets extreme values then CTMax or CTMin are managed */
   int32_t seterr, pid_out;
   int32_t error;
+
+#ifndef autotune
 
   error = (int32_t ) VoutConversion - (int32_t) lVoutT;
   seterr = (-Kp * error) / 200;
@@ -767,6 +798,64 @@ int32_t PI_Buck(void)
       CTMin--;
     }
   }
+#endif
+#ifdef autotune
+
+// Autotuned_PID
+
+  Vref=VoutT;
+  V0k=(float) VoutConversion;
+
+  ek=Vref-V0k;
+  deltaenk=ek-ekmoin1;
+
+  betak=ek*deltaenk;
+
+
+  Kpmk=Kp_auto*(1+k1*(float)(abs((int)(betak))));
+  Kimk=Ki_auto*(1+k2*betak);
+  Kdmk=Kd_auto*(1+k3*(float)(abs((int)(betak))));
+
+  sumj_kej=sumj_kej+ek;
+  uATk=(int)(Kpmk*ek+Kimk*sumj_kej+Kdmk*(ek-ekmoin1));
+
+  ekmoin1=ek;
+
+
+  pid_out=uATk;
+
+
+
+    if (pid_out >= MAX_DUTY_A)
+    {
+      pid_out = MAX_DUTY_A;
+      //sumj_kej=0;
+      //CTMax++;
+    }
+    else
+    {
+      if (CTMax != 0)
+      {
+       // CTMax--;
+      }
+    }
+    if (pid_out <= MIN_DUTY_A)
+    {
+      pid_out = MIN_DUTY_A;
+      //sumj_kej=0;
+      //CTMin++;
+    }
+    else
+    {
+      if (CTMin != 0)
+      {
+        //CTMin--;
+      }
+    }
+#endif
+
+
+
   return  pid_out;
 }
 
