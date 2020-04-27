@@ -36,7 +36,7 @@ extern BuckBoost_ModeTypeDef Mode;
 
 /* Exported constants ---------------------------------------------------------*/
 /************************************************************************************************************************/
-#define VOUT_TARGET ((uint16_t) 5000) // This is the user VOUT voltage target in mV that DC/DC converter will apply on V output
+#define VOUT_TARGET ((uint16_t) 10000) // This is the user VOUT voltage target in mV that DC/DC converter will apply on V output
 /************************************************************************************************************************/
 #define BUCK_PWM_PERIOD ((uint16_t) 18432) /* 250kHz */
 #define REAL_3V3 ((uint16_t) 3300) /* Measure 3V3 of application and enter it as reference in mV (default value is 3300) */

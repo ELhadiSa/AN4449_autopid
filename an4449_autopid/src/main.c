@@ -22,6 +22,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #define autotune
 
 /** @addtogroup STM32F3xx_HAL_Examples
@@ -726,20 +727,26 @@ static void Vout_Check(void)
 int32_t uATk;
 float Kpmk;
 float ek;
+float emax=3701;
+float enkmoin1;
 float Kimk;
 float sumj_kej;
 float Kdmk;
 float ekmoin1;
-float Kp_auto=0.25;
-float Ki_auto=0.25;
-float Kd_auto=0;
-float k1=0;//0.0001035;//ku=0.00023  tu=240us
-float k2=0;//0.0000017;
-float k3=0;
+float Kp_auto=2;
+float Ki_auto=0.3;
+float Kd_auto=0.1;
+float k1=2;//000003	0.0001035;//ku=0.00023  tu=240us kp ki = 0.25
+float k2=0.4;//0000001	0.0000017;
+float k3=9.3;
+//float k1=0;//0.0001035;//ku=0.00023  tu=240us
+//float k2=0;//0.0000017;
+//float k3=0;
 float betak;
 
 float enk;
 float deltaenk;
+float deltaek;
 
 float V0k;
 float Vref;
@@ -807,20 +814,26 @@ int32_t PI_Buck(void)
   V0k=(float) VoutConversion;
 
   ek=Vref-V0k;
-  deltaenk=ek-ekmoin1;
 
-  betak=ek*deltaenk;
+  deltaek=ek-ekmoin1;
 
 
-  Kpmk=Kp_auto*(1+k1*(float)(abs((int)(betak))));
+
+  enk=(ek/emax);
+  deltaenk=enk-enkmoin1;
+
+  betak=enk*deltaenk;
+
+
+  Kpmk=Kp_auto*(1+k1*(fabsf(betak)));
   Kimk=Ki_auto*(1+k2*betak);
-  Kdmk=Kd_auto*(1+k3*(float)(abs((int)(betak))));
+  Kdmk=Kd_auto*(1+k3*(fabsf(betak)));
 
   sumj_kej=sumj_kej+ek;
   uATk=(int)(Kpmk*ek+Kimk*sumj_kej+Kdmk*(ek-ekmoin1));
 
   ekmoin1=ek;
-
+  enkmoin1=enk;
 
   pid_out=uATk;
 
@@ -829,7 +842,7 @@ int32_t PI_Buck(void)
     if (pid_out >= MAX_DUTY_A)
     {
       pid_out = MAX_DUTY_A;
-      //sumj_kej=0;
+      sumj_kej=0;
       //CTMax++;
     }
     else
@@ -842,7 +855,7 @@ int32_t PI_Buck(void)
     if (pid_out <= MIN_DUTY_A)
     {
       pid_out = MIN_DUTY_A;
-      //sumj_kej=0;
+      sumj_kej=0;
       //CTMin++;
     }
     else

@@ -2,4 +2,4 @@
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.attachLaunchType=org.eclipse.cdt.dsf.gdb.launch.attachCLaunch,debug,;
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.postmortemLaunchType=org.eclipse.cdt.dsf.gdb.launch.coreCLaunch,debug,;
 eclipse.preferences.version=1
-prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="(Kpmk*ek+Kimk*sumj_kej+Kdmk*(ek-ekmoin1))"/>\r\n<expression enabled\="true" text\="Kpmk*ek"/>\r\n<expression enabled\="true" text\="abs((int)(betak))"/>\r\n</watchExpressions>\r\n
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="(Kpmk*ek+Kimk*sumj_kej+Kdmk*(ek-ekmoin1))"/>\r\n<expression enabled\="true" text\="Kpmk*ek"/>\r\n<expression enabled\="true" text\="abs((int)(betak))"/>\r\n<expression enabled\="true" text\="Kp"/>\r\n<expression enabled\="true" text\="(float)(abs((int)(betak)))/10000)"/>\r\n<expression enabled\="true" text\="betak"/>\r\n<expression enabled\="true" text\="betak"/>\r\n</watchExpressions>\r\n

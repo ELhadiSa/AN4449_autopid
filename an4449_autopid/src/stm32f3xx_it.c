@@ -34,8 +34,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-#define DEBUG /* for debug purpose only (check comments for use) */
-#define OVERLOAD_ON /* to check if converter in overload conditions then stop it */
+//#define DEBUG /* for debug purpose only (check comments for use) */
+//#define OVERLOAD_ON /* to check if converter in overload conditions then stop it */
 
 /* Private constants ------------------------------------------------------------*/
 #define POLYNOMIAL_INTERPOLATION_COEFF_NUMBER 4

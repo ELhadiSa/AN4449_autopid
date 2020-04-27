@@ -1,18 +1,18 @@
-20:16:40 **** Incremental Build of configuration Debug for project an4449_autopid ****
+19:24:36 **** Incremental Build of configuration Debug for project an4449_autopid ****
 Info: Internal Builder is used for build
 arm-atollic-eabi-gcc -c ..\SRC\main.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F334x8 -DUSE_HAL_DRIVER -DUSE_STM32F3348_DISCO -ID:\LIRMM\SOFT\AN4449_autopid\an4449_autopid\cmsis\inc -ID:\LIRMM\SOFT\AN4449_autopid\an4449_autopid\hal\inc -ID:\LIRMM\SOFT\AN4449_autopid\an4449_autopid\INC -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -o SRC\main.o 
 ..\SRC\main.c: In function 'HRTIM_Config':
-..\SRC\main.c:247:26: warning: unused variable 'output_config' [-Wunused-variable]
+..\SRC\main.c:248:26: warning: unused variable 'output_config' [-Wunused-variable]
    HRTIM_OutputCfgTypeDef output_config;
                           ^~~~~~~~~~~~~
 ..\SRC\main.c: In function 'PI_Buck':
-..\SRC\main.c:757:11: warning: unused variable 'error' [-Wunused-variable]
+..\SRC\main.c:764:11: warning: unused variable 'error' [-Wunused-variable]
    int32_t error;
            ^~~~~
-..\SRC\main.c:756:11: warning: unused variable 'seterr' [-Wunused-variable]
+..\SRC\main.c:763:11: warning: unused variable 'seterr' [-Wunused-variable]
    int32_t seterr, pid_out;
            ^~~~~~
-..\SRC\main.c:752:12: warning: unused variable 'lVoutT' [-Wunused-variable]
+..\SRC\main.c:759:12: warning: unused variable 'lVoutT' [-Wunused-variable]
    uint32_t lVoutT = VoutT;
             ^~~~~~
 arm-atollic-eabi-gcc -o an4449_autopid.elf SRC\main.o SRC\startup_stm32f334x8.o SRC\stm32f3xx_hal_msp.o SRC\stm32f3xx_it.o cmsis\src\system_stm32f3xx.o hal\src\stm32f3348_discovery.o hal\src\stm32f3xx_hal.o hal\src\stm32f3xx_hal_adc.o hal\src\stm32f3xx_hal_adc_ex.o hal\src\stm32f3xx_hal_cortex.o hal\src\stm32f3xx_hal_dma.o hal\src\stm32f3xx_hal_flash.o hal\src\stm32f3xx_hal_gpio.o hal\src\stm32f3xx_hal_hrtim.o hal\src\stm32f3xx_hal_pwr.o hal\src\stm32f3xx_hal_pwr_ex.o hal\src\stm32f3xx_hal_rcc.o hal\src\stm32f3xx_hal_rcc_ex.o hal\src\stm32f3xx_hal_spi.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../stm32f30_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=an4449_autopid.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group 
@@ -20,12 +20,12 @@ C:\Program Files (x86)\Atollic\TrueSTUDIO for STM32 9.3.0\ide\jre\bin\java -jar 
 Generate build reports...
 Print size information
    text	   data	    bss	    dec	    hex	filename
-  23888	    384	    648	  24920	   6158	an4449_autopid.elf
+  22292	     92	    608	  22992	   59d0	an4449_autopid.elf
 Print size information done
 Generate listing file
 Output sent to: an4449_autopid.list
 Generate listing file done
 Generate build reports done
 
-20:16:40 Build Finished (took 689ms)
+19:24:37 Build Finished (took 750ms)
 
